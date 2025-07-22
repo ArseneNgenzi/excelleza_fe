@@ -1,0 +1,38 @@
+<section id="portfolio" class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4 dark:text-white">Our Portfolio</h2>
+      <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Explore our latest projects and see how we've helped our clients achieve their digital goals.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (item of portfolioItems; track item.title) {
+        <div class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105" data-aos="fade-up" [attr.data-aos-delay]="item.delay">
+          <img 
+            [src]="item.image" 
+            [alt]="item.alt" 
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 dark:text-white">{{ item.title }}</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{{ item.description }}</p>
+            <div class="flex flex-wrap gap-2">
+              @for (tag of item.tags; track tag) {
+                <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md transition-all">
+        Talk to us
+      </a>
+    </div>
+  </div>
+</section> 

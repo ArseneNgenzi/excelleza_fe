@@ -1,13 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="utf-8">
-  <title>ExcellezaFe</title>
+  <title>Excellenza Technologies Ltd. - Software Development Agency</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Excellenza Technologies Ltd. is a software development agency specializing in web development, mobile apps, and infrastructure solutions.">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- AOS Animation Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Prevent flash of unstyled content -->
+  <script>
+    // Only run in browser environment
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      try {
+        // Check for saved theme preference or use the system preference
+        const theme = localStorage.getItem('theme-preference') || 
+          (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Apply the theme class to the html element
+        document.documentElement.classList.remove('light', 'dark');
+        document.documentElement.classList.add(theme);
+      } catch (e) {
+        // Fallback to light theme if there's an error
+        document.documentElement.classList.add('light');
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="font-sans text-gray-800 bg-white dark:text-gray-200 dark:bg-gray-900 transition-colors duration-200">
   <app-root></app-root>
 </body>
 </html>
