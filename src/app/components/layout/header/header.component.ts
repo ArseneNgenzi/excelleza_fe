@@ -1,14 +1,14 @@
-import { Component, signal, HostListener, computed, ChangeDetectionStrategy, inject, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
+import { Component, signal, HostListener, computed, ChangeDetectionStrategy, inject, OnInit, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { ThemeToggleComponent } from '../../shared/theme-toggle.component';
 import { IconComponent } from '../../shared/icon.component';
 import { filter } from 'rxjs/operators';
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ThemeToggleComponent, NgClass, IconComponent],
+  imports: [RouterLink, ThemeToggleComponent, NgClass, NgIf, IconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html'
 })
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   menuOpen = signal(false);
   activeSection = signal('hero');
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
   private scrollListener: any;
   
   isScrolled = computed(() => this.scrollY() > 50);
@@ -31,24 +32,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Add scroll event listener for section tracking
-    this.scrollListener = () => this.checkActiveSection();
-    window.addEventListener('scroll', this.scrollListener, { passive: true });
-    
-    // Initial check
-    setTimeout(() => this.checkActiveSection(), 500);
+    if (isPlatformBrowser(this.platformId)) {
+      // Add scroll event listener for section tracking
+      this.scrollListener = () => this.checkActiveSection();
+      window.addEventListener('scroll', this.scrollListener, { passive: true });
+      
+      // Initial check
+      setTimeout(() => this.checkActiveSection(), 500);
+    }
   }
   
   ngOnDestroy() {
     // Clean up event listeners
-    if (this.scrollListener) {
+    if (isPlatformBrowser(this.platformId) && this.scrollListener) {
       window.removeEventListener('scroll', this.scrollListener);
     }
   }
 
   @HostListener('window:scroll')
   onScroll() {
-    this.scrollY.set(window.scrollY);
+    if (isPlatformBrowser(this.platformId)) {
+      this.scrollY.set(window.scrollY);
+    }
   }
   
   toggleMenu() {
@@ -68,10 +73,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       if (this.router.url !== '/') {
         // Navigate to home first, then scroll to top
         this.router.navigate(['/']).then(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (isPlatformBrowser(this.platformId)) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
         });
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (isPlatformBrowser(this.platformId)) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       }
     } else {
       // For other sections
@@ -90,6 +99,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private scrollToElement(sectionId: string) {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     const element = document.getElementById(sectionId);
     if (element) {
       // Get header height to adjust scroll position
@@ -112,6 +123,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   
   private checkActiveSection() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    
     // Get all sections
     const sections = ['hero', 'about', 'services', 'portfolio', 'testimonials', 'contact'];
     const headerHeight = document.querySelector('header')?.clientHeight || 0;
