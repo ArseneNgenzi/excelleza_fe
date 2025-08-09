@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html'
 })
 export class AppComponent {
@@ -15,5 +16,6 @@ export class AppComponent {
   constructor() {
     // Theme service is injected to initialize it
     // The effect in the service will handle theme changes
+    this.themeService.initTheme();
   }
 }

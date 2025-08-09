@@ -13,7 +13,7 @@ interface PortfolioItem {
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [NgFor],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './portfolio.component.html'
 })

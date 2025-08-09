@@ -32,7 +32,7 @@ export class ThemeService {
     this.currentTheme.update(theme => theme === 'light' ? 'dark' : 'light');
   }
   
-  private initTheme(): void {
+  public initTheme(): void {
     if (!this.isBrowser) {
       // Default to light theme on the server
       return;

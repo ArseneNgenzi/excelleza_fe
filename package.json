@@ -21,6 +21,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.1.6",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
@@ -29,6 +30,7 @@
     "@angular/platform-server": "^20.0.0",
     "@angular/router": "^20.0.0",
     "@angular/ssr": "^20.0.5",
+    "angular-feather": "^6.5.1",
     "aos": "^2.3.4",
     "express": "^5.1.0",
     "feather-icons": "^4.29.2",

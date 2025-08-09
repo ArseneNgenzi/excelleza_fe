@@ -5,23 +5,41 @@
     <div class="flex justify-between items-center">
       <div class="logo">
         <a routerLink="/" class="text-2xl font-bold">
-          <span class="text-blue-600 text-3xl">E</span>xcellenza
+          <span class="text-blue-600 text-3xl">E</span>ccellenza
         </a>
       </div>
       
       <nav class="hidden md:flex items-center">
         <ul class="flex space-x-8 mr-4">
-          <li>
-            <a (click)="scrollToSection('hero', $event)" 
+          <li >
+            <button (click)="scrollToSection('hero', $event)" 
                href="#hero" 
                [ngClass]="{
                  'text-blue-600 font-semibold': isActive('hero'),
                  'font-medium hover:text-blue-600 transition-all dark:text-gray-200 dark:hover:text-blue-400': !isActive('hero')
                }"
                class="cursor-pointer relative flex items-center">
-              <app-icon name="home" size="sm" class="mr-1"></app-icon>
+              <app-icon [name]="'Home'" size="sm" class="mr-1"></app-icon>
               Home
-              <span *ngIf="isActive('hero')" class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              <!-- @if (isActive('hero')) {
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              } -->
+            </button>
+          </li>
+          
+          <li>
+            <a (click)="scrollToSection('services', $event)" 
+               href="#services" 
+               [ngClass]="{
+                 'text-blue-600 font-semibold': isActive('services'),
+                 'font-medium hover:text-blue-600 transition-all dark:text-gray-200 dark:hover:text-blue-400': !isActive('services')
+               }"
+               class="cursor-pointer relative flex items-center">
+              <app-icon [name]="'Briefcase'" size="sm" class="mr-1"></app-icon>
+              Services
+              <!-- @if (isActive('services')) {
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              } -->
             </a>
           </li>
           <li>
@@ -32,22 +50,11 @@
                  'font-medium hover:text-blue-600 transition-all dark:text-gray-200 dark:hover:text-blue-400': !isActive('about')
                }"
                class="cursor-pointer relative flex items-center">
-              <app-icon name="users" size="sm" class="mr-1"></app-icon>
+              <app-icon [name]="'Users'" size="sm" class="mr-1"></app-icon>
               About
-              <span *ngIf="isActive('about')" class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
-            </a>
-          </li>
-          <li>
-            <a (click)="scrollToSection('services', $event)" 
-               href="#services" 
-               [ngClass]="{
-                 'text-blue-600 font-semibold': isActive('services'),
-                 'font-medium hover:text-blue-600 transition-all dark:text-gray-200 dark:hover:text-blue-400': !isActive('services')
-               }"
-               class="cursor-pointer relative flex items-center">
-              <app-icon name="briefcase" size="sm" class="mr-1"></app-icon>
-              Services
-              <span *ngIf="isActive('services')" class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              <!-- @if (isActive('about')) {
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              } -->
             </a>
           </li>
           <li>
@@ -60,7 +67,10 @@
                class="cursor-pointer relative flex items-center">
               <app-icon name="grid" size="sm" class="mr-1"></app-icon>
               Portfolio
-              <span *ngIf="isActive('portfolio')" class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              <!-- <span *ngIf="isActive('portfolio')" class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span> -->
+              <!-- @if (isActive('portfolio')) {
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              } -->
             </a>
           </li>
           <!-- <li><a routerLink="/blog" routerLinkActive="text-blue-600" class="font-medium hover:text-blue-600 transition-all dark:text-gray-200 dark:hover:text-blue-400">Blog</a></li> -->
@@ -72,9 +82,11 @@
                  'font-medium hover:text-blue-600 transition-all dark:text-gray-200 dark:hover:text-blue-400': !isActive('contact')
                }"
                class="cursor-pointer relative flex items-center">
-              <app-icon name="mail" size="sm" class="mr-1"></app-icon>
+              <app-icon [name]="'Mail'" size="sm" class="mr-1"></app-icon>
               Contact
-              <span *ngIf="isActive('contact')" class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              <!-- @if (isActive('contact')) {
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform -translate-y-1"></span>
+              } -->
             </a>
           </li>
         </ul>

@@ -12,7 +12,7 @@ interface TestimonialItem {
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [NgFor, NgClass, NgIf],
+  imports: [ NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './testimonials.component.html'
 })
