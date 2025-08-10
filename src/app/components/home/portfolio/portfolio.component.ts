@@ -19,7 +19,7 @@ interface PortfolioItem {
 export class PortfolioComponent {
   portfolioItems: PortfolioItem[] = [
     {
-      image: 'https://res.cloudinary.com/dd2gn74lv/image/upload/v1754839351/Screenshot_2025-08-10_at_17.22.13_bcoogv.png',
+      image: 'irpv.png',
       alt: 'Rwanda Valuation System',
       title: 'Rwanda Valuation System',
       description: 'Centralized registry enabling property valuations, online requests, certificate verification, and valuer oversight—improving trust and reducing fraud.',
@@ -27,7 +27,7 @@ export class PortfolioComponent {
       delay: 100
     },
     {
-      image: 'https://res.cloudinary.com/dd2gn74lv/image/upload/v1754838868/Screenshot_2025-08-10_at_17.14.09_yeym6e.png',
+      image: 'deeds.png',
       alt: 'Deeds Platform – Zimbabwe',
       title: 'Deeds Platform – Zimbabwe',
       description: 'Digital land management platform to search and verify property records and transfer ownership via conveyancers—modernizing transactions.',
@@ -35,7 +35,7 @@ export class PortfolioComponent {
       delay: 150
     },
     {
-      image: 'https://res.cloudinary.com/dd2gn74lv/image/upload/v1754840105/Screenshot_2025-08-10_at_17.28.40_zynibu.png',
+      image: 'repz.png',
       alt: 'REPZ Real Estate Platform – Zimbabwe',
       title: 'REPZ Real Estate Platform – Zimbabwe',
       description: 'Centralized platform for listing, buying, renting, and selling properties—integrated with land system to verify agents and properties, reducing fraud.',
@@ -43,7 +43,7 @@ export class PortfolioComponent {
       delay: 200
     },
     {
-      image: 'https://res.cloudinary.com/dd2gn74lv/image/upload/v1754840722/Screenshot_2025-08-10_at_17.44.18_mwazk5.png',
+      image: 'social.png',
       alt: 'Social Registry – Rwanda',
       title: 'Social Registry – Rwanda',
       description: 'National social registry consolidating program data to help institutions identify vulnerable households by defined criteria.',
@@ -51,7 +51,7 @@ export class PortfolioComponent {
       delay: 250
     },
     {
-      image: 'https://res.cloudinary.com/dd2gn74lv/image/upload/v1754841407/umucyo_hrkyjk.jpg',
+      image: 'umucyo.jpg',
       alt: 'Umucyo System (PKI Integration)',
       title: 'Umucyo System (PKI Integration)',
       description: 'Integrated PKI for secure digital signatures and encrypted transactions—strengthening trust in procurement.',
