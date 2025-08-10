@@ -2,6 +2,9 @@
   command = "ng build --configuration=production"
   publish = "dist/excelleza_fe/browser"
 
+[context.production.environment]
+  NODE_VERSION = "20"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
