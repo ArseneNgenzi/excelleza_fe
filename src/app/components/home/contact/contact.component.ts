@@ -16,7 +16,7 @@ export class ContactComponent {
   // UI state signals
   submissionStatus = signal<'idle' | 'submitting' | 'success' | 'error'>('idle');
   successMessage = signal<string>('');
-  emailAddress: string = 'info@xolio.com';
+  emailAddress: string = 'info@eccellenza.rw';
   
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({

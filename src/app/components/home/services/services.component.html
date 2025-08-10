@@ -1,18 +1,17 @@
 <section class="py-20 bg-white dark:bg-gray-800" id="services">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16" data-aos="fade-up">
-      <h2 class="text-3xl lg:text-4xl font-bold mb-4">Our Services</h2>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4">Core Expertise</h2>
       <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
       <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        We provide high-quality services to help businesses grow and succeed in the digital world.
+        Timely, scalable, and cost-efficient solutions that drive real-world impact across Africa.
       </p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       @for (service of services(); track service.title; let i = $index) {
         <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-8 transition-all hover:shadow-lg" data-aos="fade-up" [attr.data-aos-delay]="i * 100">
-          <div class="w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center mb-6 text-white">
-            <!-- <span [innerHTML]="service.icon"></span> -->
+          <div class="w-20 h-20 bg-blue-600 dark:bg-blue-500 rounded-lg flex items-center justify-center mb-6 text-white">
             <app-icon [name]="service.icon" size="lg"></app-icon>
           </div>
           <h3 class="text-xl font-bold mb-4">{{ service.title }}</h3>

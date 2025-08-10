@@ -3,12 +3,12 @@ import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { ThemeToggleComponent } from '../../shared/theme-toggle.component';
 import { IconComponent } from '../../shared/icon.component';
 import { filter } from 'rxjs/operators';
-import { NgClass, NgIf, isPlatformBrowser } from '@angular/common';
+import { NgClass, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, ThemeToggleComponent, NgClass, NgIf, IconComponent],
+  imports: [RouterLink, ThemeToggleComponent, NgClass, IconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html'
 })

@@ -4,73 +4,65 @@
       <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">What Our Clients Say</h2>
       <div class="w-20 md:w-24 h-1 bg-white mx-auto mb-4 md:mb-6"></div>
       <p class="text-base md:text-lg max-w-3xl mx-auto">
-        Don't just take our word for it. Here's what our clients have to say about working with us.
+        Stories from partners and clients we’ve supported across Africa.
       </p>
     </div>
-    
-    <!-- Testimonial Slider -->
-    <div class="relative px-8 md:px-12">
-      <!-- Slides -->
+
+    <div class="relative px-2 md:px-6 lg:px-8">
       <div class="overflow-hidden">
-        <div class="flex transition-transform duration-500 ease-in-out" 
+        <div class="flex transition-transform duration-500 ease-in-out"
              [style.transform]="'translateX(-' + currentSlide() * slideWidth + '%)'">
-          @for (item of testimonialItems; track item.name) {
+          @for (t of testimonials; track t.name) {
             <div [style.width.%]="slideWidth" class="flex-shrink-0 px-2 md:px-3 lg:px-4">
-              <div class="bg-white text-gray-800 p-4 md:p-6 rounded-lg shadow-lg h-full" data-aos="fade-up">
-                <div class="flex items-center mb-3 md:mb-4">
-                  <img 
-                    [src]="item.image" 
-                    [alt]="item.name" 
-                    class="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mr-3"
-                  />
+              <div class="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-5 md:p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 h-full" data-aos="fade-up">
+                <div class="flex items-center mb-4">
+                  <img [src]="t.image" [alt]="t.name" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover mr-3 md:mr-4" />
                   <div>
-                    <h4 class="font-bold text-sm md:text-base">{{ item.name }}</h4>
-                    <p class="text-gray-600 text-xs md:text-sm">{{ item.role }}, {{ item.company }}</p>
+                    <h4 class="font-bold text-sm md:text-base">{{ t.name }}</h4>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs md:text-sm">{{ t.position }}, {{ t.company }}</p>
                   </div>
                 </div>
-                <p class="text-gray-600 text-xs md:text-sm">
-                  "{{ item.comment }}"
-                </p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">“{{ t.message }}”</p>
               </div>
             </div>
           }
         </div>
       </div>
-      
-      <!-- Navigation Arrows -->
+
       <button 
-        class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 text-white p-2 md:p-3 rounded-full focus:outline-none z-10"
+        class="absolute left-0 top-1/2 -translate-y-1/2 bg-blue-600/80 hover:bg-blue-600 text-white p-2 md:p-3 rounded-full focus:outline-none z-10 shadow-md"
         (click)="prevSlide()"
+        [attr.aria-label]="'Previous testimonial'"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       <button 
-        class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-30 hover:bg-opacity-50 text-white p-2 md:p-3 rounded-full focus:outline-none z-10"
+        class="absolute right-0 top-1/2 -translate-y-1/2 bg-blue-600/80 hover:bg-blue-600 text-white p-2 md:p-3 rounded-full focus:outline-none z-10 shadow-md"
         (click)="nextSlide()"
+        [attr.aria-label]="'Next testimonial'"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
-      
-      <!-- Dots Indicator -->
+
       <div class="flex justify-center mt-6 md:mt-8">
-        @for (item of testimonialItems; track item; let i = $index) {
+        @for (t of testimonials; track t; let i = $index) {
           @if (i <= maxSlideIndex) {
-            <button 
+            <button
               class="w-2 h-2 md:w-3 md:h-3 mx-1 rounded-full focus:outline-none"
-              [ngClass]="{'bg-white': isActiveDot(i), 'bg-white bg-opacity-40': !isActiveDot(i)}"
+              [ngClass]="{'bg-blue-600 dark:bg-blue-400': isActiveDot(i), 'bg-gray-300 dark:bg-gray-600': !isActiveDot(i)}"
               (click)="goToSlide(i)"
+              [attr.aria-label]="'Go to testimonials starting at ' + (i + 1)"
             ></button>
           }
         }
       </div>
     </div>
   </div>
-  
-  <!-- Decorative elements -->
+
   <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-blue-500 opacity-20 rounded-br-full"></div>
   <div class="absolute bottom-0 right-0 w-1/4 h-1/4 bg-blue-500 opacity-20 rounded-tl-full"></div>
 </section> 

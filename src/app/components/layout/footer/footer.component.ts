@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ChangeDetectionStrategy, PLATFORM_ID, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,8 @@ import { RouterLink } from '@angular/router';
 })
 export class FooterComponent {
   year: number = new Date().getFullYear();
-  emailAddress: string = 'info@excellenza.com';
-  
+  emailAddress: string = 'info@eccellenza.rw';
+  private platformId = inject(PLATFORM_ID);
+  private router = inject(Router);
   constructor() {}
-} 
+  }

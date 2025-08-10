@@ -1,74 +1,87 @@
 import { Component, ChangeDetectionStrategy, signal, HostListener } from '@angular/core';
-import { NgFor, NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
-interface TestimonialItem {
+interface Testimonial {
   image: string;
   name: string;
-  role: string;
+  message: string;
   company: string;
-  comment: string;
+  position: string;
 }
 
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [ NgClass],
+  imports: [NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './testimonials.component.html'
 })
 export class TestimonialsComponent {
   currentSlide = signal(0);
   screenWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 0);
-  
-  testimonialItems: TestimonialItem[] = [
+
+  testimonials: Testimonial[] = [
     {
-      image: 'https://randomuser.me/api/portraits/women/32.jpg',
-      name: 'Sarah Johnson',
-      role: 'Marketing Director',
-      company: 'TechCorp',
-      comment: 'Working with this team was a game-changer for our business. They completely transformed our online presence and helped us increase our leads by over 200% in just three months.'
+      image: 'https://randomuser.me/api/portraits/men/12.jpg',
+      name: 'Innocent Byiringiro',
+      message: 'Eccellenza delivered a robust land registry system on time. Their team ensured data integrity and a smooth rollout.',
+      company: 'IRPV',
+      position: 'Executive Director'
     },
     {
-      image: 'https://randomuser.me/api/portraits/men/46.jpg',
-      name: 'Michael Chen',
-      role: 'CEO',
-      company: 'StartupHub',
-      comment: 'Their team\'s attention to detail and commitment to quality is unmatched. They didn\'t just deliver a website; they delivered a comprehensive digital strategy that has been instrumental in our growth.'
+      image: 'https://randomuser.me/api/portraits/women/24.jpg',
+      name: 'Chipo Moyo',
+      message: 'The Deeds Platform modernized our workflows and drastically reduced processing time for land transfers.',
+      company: 'Government of Zimbabwe',
+      position: 'Project Coordinator'
+    },
+    {
+      image: 'https://randomuser.me/api/portraits/men/31.jpg',
+      name: 'Tafadzwa Ndlovu',
+      message: 'REPZ elevated the real estate experience with verified listings. Fraud cases dropped noticeably.',
+      company: 'Private Sector',
+      position: 'Product Lead'
     },
     {
       image: 'https://randomuser.me/api/portraits/women/65.jpg',
-      name: 'Emily Rodriguez',
-      role: 'Design Director',
-      company: 'CreativeStudio',
-      comment: 'I\'ve worked with many digital agencies over the years, but none have impressed me as much as this team. Their creativity, technical expertise, and project management are all top-notch.'
+      name: 'Aline Uwase',
+      message: 'Their QA practices gave us confidence. The social registry launched with exceptional stability.',
+      company: 'MINALOC (via QT Global)',
+      position: 'Program Manager'
     },
     {
-      image: 'https://randomuser.me/api/portraits/men/22.jpg',
-      name: 'David Thompson',
-      role: 'CTO',
-      company: 'InnovateX',
-      comment: 'The development team exceeded our expectations in every way. They not only delivered on time but also provided innovative solutions to problems we hadn\'t even considered.'
+      image: 'https://randomuser.me/api/portraits/men/28.jpg',
+      name: 'Jean Bosco',
+      message: 'The PKI integration on Umucyo significantly strengthened trust and compliance in procurement.',
+      company: 'RPPA (via QT Global)',
+      position: 'Technical Lead'
     },
     {
-      image: 'https://randomuser.me/api/portraits/women/45.jpg',
-      name: 'Jessica Williams',
-      role: 'Operations Manager',
-      company: 'GlobalTech',
-      comment: 'From the initial consultation to the final delivery, the entire process was smooth and professional. Our new system has streamlined operations and reduced costs significantly.'
+      image: 'https://randomuser.me/api/portraits/women/37.jpg',
+      name: 'Grace Mukamana',
+      message: 'A reliable partner. Excellent communication and timely delivery across complex milestones.',
+      company: 'QT Global Software',
+      position: 'Delivery Manager'
     },
     {
-      image: 'https://randomuser.me/api/portraits/men/36.jpg',
-      name: 'Robert Garcia',
-      role: 'Founder',
-      company: 'NextGen Solutions',
-      comment: 'We approached them with a challenging project that other agencies had turned down. Not only did they accept the challenge, but they delivered a solution that exceeded all our expectations.'
+      image: 'https://randomuser.me/api/portraits/men/45.jpg',
+      name: 'Farai Chiwara',
+      message: 'From design to deployment, the team showed mastery and ownership. Highly recommended.',
+      company: 'Dokuma Group',
+      position: 'Operations Director'
+    },
+    {
+      image: 'https://randomuser.me/api/portraits/women/12.jpg',
+      name: 'Diane Nyirahabimana',
+      message: 'The CMS for CHOGM handled dynamic updates flawlessly and scaled during peak traffic.',
+      company: 'Gov’t of Rwanda (via QT Global)',
+      position: 'Communications Lead'
     }
   ];
 
   @HostListener('window:resize')
   onResize() {
     this.screenWidth.set(window.innerWidth);
-    // Reset to first slide when resizing to avoid out-of-bounds issues
     if (this.currentSlide() > this.maxSlideIndex) {
       this.currentSlide.set(0);
     }
@@ -76,9 +89,9 @@ export class TestimonialsComponent {
 
   get visibleSlidesCount(): number {
     const width = this.screenWidth();
-    if (width < 768) return 1;      // Mobile: 1 slide
-    if (width < 1024) return 2;     // Tablet: 2 slides
-    return 3;                       // Desktop: 3 slides
+    if (width < 768) return 1;
+    if (width < 1024) return 2;
+    return 3;
   }
 
   get slideWidth(): number {
@@ -86,19 +99,15 @@ export class TestimonialsComponent {
   }
 
   get maxSlideIndex(): number {
-    return Math.max(0, this.testimonialItems.length - this.visibleSlidesCount);
+    return Math.max(0, this.testimonials.length - this.visibleSlidesCount);
   }
 
   nextSlide(): void {
-    this.currentSlide.update(current => 
-      current < this.maxSlideIndex ? current + 1 : current
-    );
+    this.currentSlide.update(current => current < this.maxSlideIndex ? current + 1 : current);
   }
 
   prevSlide(): void {
-    this.currentSlide.update(current => 
-      current > 0 ? current - 1 : current
-    );
+    this.currentSlide.update(current => current > 0 ? current - 1 : current);
   }
 
   goToSlide(index: number): void {
@@ -109,6 +118,6 @@ export class TestimonialsComponent {
 
   isActiveDot(index: number): boolean {
     const current = this.currentSlide();
-    return index >= current && index < current + this.visibleSlidesCount;
+    return index >= current && index < current + 1;
   }
 } 
