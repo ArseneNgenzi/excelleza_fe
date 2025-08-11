@@ -1,0 +1,6 @@
+services:
+  eccellenza_web:
+    build: .
+    container_name: eccellenza_web
+    ports:
+      - "4200:4200"
