@@ -64,7 +64,7 @@
               "buildTarget": "excelleza_fe:build:development"
             }
           },
-          "defaultConfiguration": "production",
+          "defaultConfiguration": "development",
           "options": {
             "allowedHosts": ["eccellenza.rw"]
           }
