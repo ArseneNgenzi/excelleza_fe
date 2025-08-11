@@ -9,7 +9,7 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./pages/home.component').then(m => m.HomeComponent),
-        title: 'Xolio - Creative Digital Agency'
+        title: 'Eccellenza Technologies Ltd.'
       }
     ]
   },

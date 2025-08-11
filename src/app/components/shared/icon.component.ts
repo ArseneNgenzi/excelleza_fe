@@ -35,7 +35,7 @@ styles: [`
 })
 export class IconComponent implements OnChanges {
   @Input() name!: string;
-  @Input() size?: 'sm' | 'lg' = 'sm';
+  @Input() size?: 'sm' | 'md' | 'lg' = 'sm';
 
   svgContent: SafeHtml | null = null;
 
@@ -74,7 +74,7 @@ export class IconComponent implements OnChanges {
   }
 
   public getIconClass(): string {
-    const sizeClass = this.size === 'lg' ? 'w-8 h-8' : 'w-4 h-4';
+    const sizeClass = this.size === 'lg' ? 'w-8 h-8' : this.size === 'md' ? 'w-6 h-6' : 'w-4 h-4';
     return `flex items-center justify-center ${sizeClass}`;
   }
 

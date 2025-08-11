@@ -19,7 +19,8 @@ interface PortfolioItem {
 export class PortfolioComponent {
   portfolioItems: PortfolioItem[] = [
     {
-      image: 'irpv.png',
+      image: 'irpv.jpg',
+      // image:'https://res.cloudinary.com/dd2gn74lv/image/upload/v1754931461/WhatsApp_Image_2025-08-11_at_11.24.46_my8s3r.jpg',
       alt: 'Rwanda Valuation System',
       title: 'Rwanda Valuation System',
       description: 'Centralized registry enabling property valuations, online requests, certificate verification, and valuer oversight—improving trust and reducing fraud.',
