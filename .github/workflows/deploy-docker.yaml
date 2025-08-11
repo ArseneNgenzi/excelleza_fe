@@ -1,0 +1,27 @@
+name: Build and Deploy 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Deploy Docker Container
+        uses: appleboy/ssh-action@v1
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            debug: true
+            key: ${{ secrets.KEY }}
+            script: |
+                cd /root/excelleza_fe
+                git pull origin  main
+                docker compose down
+                docker compose build
+                docker compose up -d
+                docker ps -a 
