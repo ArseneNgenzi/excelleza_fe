@@ -1,4 +1,7 @@
+
 FROM node:22.13.1
+
+RUN npm install -g @angular/cli@20.1.5
 
 WORKDIR /app
 
