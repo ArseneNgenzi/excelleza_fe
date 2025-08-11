@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   server: {
-    allowedHosts: ['eccellenza.rw']
+    host: true,
+    allowedHosts: ['eccellenza.rw'],
+    hmr: { host: 'eccellenza.rw' },
   }
 });
