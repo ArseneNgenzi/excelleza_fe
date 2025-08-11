@@ -1,18 +1,22 @@
-# name: Build and Deploy 
 
-# on:
-#   push:
-#     branches:
-#       - main
+name: Build and Deploy  static files
 
-# jobs:
-#   build:
-#     name: Build 
-#     runs-on: ubuntu-24.04
+on:
+  push:
+    branches:
+      - none
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
+jobs:
+  build:
+    name: Build 
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Print a message
+        run: echo "This pipeline is not in use."
+
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
 
 #       - name: Set up Node.js
 #         uses: actions/setup-node@v4
