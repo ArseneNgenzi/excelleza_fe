@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 4200
 
 # Run ng serve in dev mode, listening on all interfaces
-CMD ["ng", "serve"]
+CMD ["ng", "serve", "--host", "0.0.0.0"]
