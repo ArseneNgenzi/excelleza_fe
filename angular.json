@@ -64,7 +64,10 @@
               "buildTarget": "excelleza_fe:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "production",
+          "options": {
+            "allowedHosts": ["eccellenza.rw"]
+          }
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
