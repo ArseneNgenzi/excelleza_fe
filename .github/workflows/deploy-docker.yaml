@@ -16,11 +16,12 @@ jobs:
         with:
             host: ${{ secrets.HOST }}
             username: ${{ secrets.USERNAME }}
+            debug: true
             key: ${{ secrets.KEY }}
             script: |
                 cd /root/excelleza_fe
                 git pull origin  main
-                docker-compose down
-                docker-compose build
-                docker-compose up -d
+                docker compose down
+                docker compose build
+                docker compose up -d
                 docker ps -a 
